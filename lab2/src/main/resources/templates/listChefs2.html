@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<table>
+  <thead>
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">first name</th>
+    <th scope="col">last name</th>
+    <th scope="col">bio</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="chef : ${chefs}">
+    <td th:text="${chef.id}"></td>
+    <td th:text="${chef.firstName}"></td>
+    <td th:text="${chef.lastName}"></td>
+    <td th:text="${chef.bio}">
+    <td class="text-right">
+      <th:block>
+        <form th:action="@{'/chefs/delete/{id}' (id=${chef.customId})}"
+              th:method="DELETE">
+          <button type="submit">
+            <i>Delete</i>
+          </button>
+        </form>
+      </th:block>
+      <th:block>
+        <form th:action="@{'/chefs/edit-form/{id}' (id=${chef.customId})}"
+              th:method="POST">
+          <button type="submit">
+            <i>Edit</i>
+          </button>
+        </form>
+      </th:block>
+
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<div>
+  <a href="/chefs/chef-form">
+    Add new product
+  </a>
+</div>
+
+
+
+</body>
+</html>

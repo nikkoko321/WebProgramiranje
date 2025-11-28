@@ -1,0 +1,42 @@
+<div th:with="formAction = ${chef != null} ? '/chefs/edit/' + ${chef.customId} : '/chefs'">
+  <form method="post" th:action="${formAction}">
+    <div>
+      <label for="i">Chef Id</label>
+      <input type="text"
+             id="i"
+             name="id"
+             th:value="${chef != null ? chef.id : ''}"
+             required>
+    </div>
+
+    <div>
+      <label for="n">Chef Name</label>
+      <input type="text"
+             id="n"
+             name="firstName"
+             th:value="${chef != null ? chef.firstName : ''}"
+             required>
+    </div>
+
+    <div>
+      <label for="c">Chef Cuisine</label><br/>
+      <input type="text"
+             id="c"
+             name="lastName"
+             th:value="${chef != null ? chef.lastName : ''}"
+             min="1"
+             required>
+    </div>
+    <div>
+      <label for="p">Chef PrepTime</label><br/>
+      <input type="text"
+             id="p"
+             name="bio"
+             th:value="${chef != null ? chef.bio : ''}"
+             min="1"
+             required>
+    </div>
+
+    <button id="submit" type="submit">Submit</button>
+    <a id="back" href="/chefs" type="button" >Back to Chefs</a>
+  </form>

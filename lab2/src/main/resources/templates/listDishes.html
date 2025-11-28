@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th scope="col">dishId</th>
+        <th scope="col">name</th>
+        <th scope="col">cuisine</th>
+        <th scope="col">Preperation Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="dish : ${dishes}">
+        <td th:text="${dish.dishId}"></td>
+        <td th:text="${dish.name}"></td>
+        <td th:text="${dish.cuisine}"></td>
+        <td th:text="${dish.preparationTime}"></td>
+        <td class="text-right">
+            <th:block>
+                <form th:action="@{'/dishes/delete/{id}' (id=${dish.id})}"
+                      th:method="DELETE">
+                    <button type="submit">
+                        <i>Delete</i>
+                    </button>
+                </form>
+            </th:block>
+            <th:block>
+                <a th:href="@{'/dishes/edit-form/{id}' (id=${dish.id})}">
+                    <i>Edit</i>
+                </a>
+            </th:block>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div>
+    <a href="/dishes/dish-form">
+        Add new product
+    </a>
+</div>
+
+
+
+</body>
+</html>

@@ -43,9 +43,8 @@ public class ChefDetailsServlet extends HttpServlet {
         String dishId = req.getParameter("dishId");
 
         Chef chef = chefService.findById(Long.parseLong(chefId));
-        Dish dish = dishService.findByDishId(dishId);
 
-        chef.dishes.add(dish);
+        chefService.addDishToChef(Long.parseLong(chefId), dishId);
         context.setVariable("ime", chef.firstName);
         context.setVariable("bio", chef.bio);
         context.setVariable("dishes", chef.dishes);

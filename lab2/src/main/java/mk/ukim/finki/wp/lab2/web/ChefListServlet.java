@@ -34,6 +34,7 @@ public class ChefListServlet extends HttpServlet {
         WebContext context = new WebContext(iWebExchange);
         context.setVariable("chefs", chefService.listChefs());
 
+
         templateEngine.process("listChefs", context, resp.getWriter());
 
     }

@@ -16,11 +16,11 @@ public class DataHolder {
 
     @PostConstruct
     public void init(){
-        dishes.add(new Dish("#aad331", "Supa", "blaa", 30));
-        dishes.add(new Dish("#aad32131", "Salama", "blaa", 20));
-        dishes.add(new Dish("#331", "Jajca", "akajgana", 50));
-        chefs.add(new Chef(232L, "Nikola", "asdad", "biogradsdaa  ads", dishes));
-        chefs.add(new Chef(2369102L, "marsa", "reprez", "biodaa  ads", dishes));
+        dishes.add(new Dish("#aad331", "Pasta Carbonara", "blaa", 30));
+        dishes.add(new Dish("#aad32131", "Beef Wellington", "blaa", 20));
+        dishes.add(new Dish("#331", "Chicken Tikka Masala", "akajgana", 50));
+        chefs.add(new Chef(232L, "Jamie", "Oliver", "Bio od Oliver", new ArrayList<>()));
+        chefs.add(new Chef(2369102L, "Gordon", "Ramsy", "Bio of Ramsy", new ArrayList<>()));
     }
 
 }

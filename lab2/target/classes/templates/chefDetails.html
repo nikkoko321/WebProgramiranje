@@ -26,19 +26,14 @@
 </head>
 <body>
 <!-- Dynamically display data -->
-<span th:text = "${ime}"></span> <span th:text = "${bio}"></span>
-<ul th:each = "dish : ${dishes}">
-    <li th:text = "${dish.name}"></li>
-</ul>
 <header>
-    <h1>Chef: Gordon Ramsay</h1>
+    <h1 th:text = "${ime}"></h1>
 </header>
 <section>
-    <h2>Bio: World-renowned chef with 16 Michelin stars</h2>
+    <h2 th:text = "${bio}"></h2>
     <h2>Dishes prepared by this chef:</h2>
-    <ul>
-        <li>Beef Wellington (British, 45 min)</li>
-        <li>Sticky Toffee Pudding (British, 30 min)</li>
+    <ul th:each = "dish : ${dishes}">
+        <li th:text = "${dish.name}"></li>
     </ul>
 </section>
 </body>

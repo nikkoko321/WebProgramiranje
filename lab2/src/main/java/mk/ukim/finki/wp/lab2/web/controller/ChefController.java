@@ -45,7 +45,7 @@ public class ChefController {
                            @RequestParam String lastName,
                            @RequestParam String bio){
 
-        chefService.create(id,  firstName,  lastName,  bio, new ArrayList<>());
+        chefService.create(firstName,  lastName,  bio, new ArrayList<>());
         return "redirect:/chefs";
 
     }
@@ -58,7 +58,7 @@ public class ChefController {
                            @RequestParam String lastName,
                            @RequestParam String bio){
 
-        chefService.update(customId,  id,  firstName,  lastName,  bio, chefService.findById(customId).dishes);
+        chefService.update(customId,  firstName,  lastName,  bio, chefService.findById(customId).dishes);
         return "redirect:/chefs";
 
     }

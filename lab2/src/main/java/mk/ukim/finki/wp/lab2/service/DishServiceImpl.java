@@ -46,4 +46,10 @@ public class DishServiceImpl implements DishService {
     public void delete(Long id) {
         dishRepository.deleteById(id);
     }
+
+    @Override
+    public List<Dish> findAllByChefId(Long chefId) {
+        return dishRepository.findAllByChef_Id(chefId);
+    }
+
 }

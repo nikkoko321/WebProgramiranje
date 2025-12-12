@@ -1,31 +1,54 @@
 package mk.ukim.finki.wp.lab2.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
+@Entity
 public class Chef {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
     public String firstName;
     public String lastName;
     public String bio;
+    @OneToMany(mappedBy = "chef")
     public List<Dish> dishes;
 
-    public Long customId;
-
     public Chef(){
-        this.customId = (long) (Math.random() * 1000);
     }
 
-    public Chef(Long id, String firstName, String lastName, String bio, List<Dish> dishes) {
-        this.id = id;
+    public Chef(String firstName, String lastName, String bio, List<Dish> dishes) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.bio = bio;
         this.dishes = dishes;
-        this.customId = (long) (Math.random() * 1000);
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public void setDishes(List<Dish> dishes) {
+        this.dishes = dishes;
+    }
+
+    public List<Dish> getDishes() {
+        return dishes;
+    }
 }

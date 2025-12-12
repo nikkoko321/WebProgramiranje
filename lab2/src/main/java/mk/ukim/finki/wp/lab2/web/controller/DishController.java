@@ -107,7 +107,7 @@ public class DishController {
     }
 
     @PostMapping("/chefDetails")
-    public String chefDetails(Model model, @RequestParam String chefId, @RequestParam String dishId){
+    public String chefDetails(Model model, @RequestParam String chefId, @RequestParam Long dishId){
 
         Chef chef = chefService.findById(Long.parseLong(chefId));
 

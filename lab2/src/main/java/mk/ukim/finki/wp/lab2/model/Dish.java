@@ -1,20 +1,26 @@
 package mk.ukim.finki.wp.lab2.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Data
+@Entity
 public class Dish {
+
 
     public String dishId;
     public String name;
     public String cuisine;
     public int preparationTime;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
+    @ManyToOne
+    public Chef chef;
 
     public Dish(){
-        this.id = (long) (Math.random() * 1000);
     }
 
     public Dish(String dishId, String name, String cuisine, int preparationTime) {
@@ -22,7 +28,6 @@ public class Dish {
         this.name = name;
         this.cuisine = cuisine;
         this.preparationTime = preparationTime;
-        this.id = (long) (Math.random() * 1000);
     }
 
 }

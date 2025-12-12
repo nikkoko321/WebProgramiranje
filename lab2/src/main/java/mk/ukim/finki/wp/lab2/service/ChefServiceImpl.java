@@ -31,11 +31,11 @@ public class ChefServiceImpl implements ChefService {
     }
 
     @Override
-    public Chef addDishToChef(Long chefId, String dishId) {
+    public Chef addDishToChef(Long chefId, Long id) {
         Optional<Chef> chef = chefRepository.findById(chefId);
         if(chef.isPresent()) {
             Chef chef1 = chef.get();
-            Dish dish = chefDishRepository.findByDishId(dishId);
+            Dish dish = chefDishRepository.findById(id).get();
             chef1.dishes.add(dish);
             chefRepository.save(chef1);
         }
@@ -44,18 +44,17 @@ public class ChefServiceImpl implements ChefService {
 
 
     @Override
-    public Chef create(Long id, String firstName, String lastName, String bio, List<Dish> dishes) {
-        return chefRepository.save(new Chef(id, firstName, lastName, bio, dishes));
+    public Chef create(String firstName, String lastName, String bio, List<Dish> dishes) {
+        return chefRepository.save(new Chef(firstName, lastName, bio, dishes));
     }
 
 
     @Override
-    public Chef update(Long customId, Long id, String firstName, String lastName, String bio, List<Dish> dishes) {
-        Chef d = chefRepository.findById(customId).orElseThrow();
+    public Chef update(Long id, String firstName, String lastName, String bio, List<Dish> dishes) {
+        Chef d = chefRepository.findById(id).orElseThrow();
         d.setFirstName(firstName);
         d.setLastName(lastName);
         d.setBio(bio);
-        d.setId(id);
         return d;
     }
 

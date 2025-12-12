@@ -45,7 +45,7 @@
     <input type="hidden" name="chefId" th:value="${chefId}">
     <th:block th:each = "dish : ${dishes}">
       <label>
-        <input type = "radio" name = "dishId" th:value = "${dish.dishId}">
+        <input type = "radio" name = "dishId" th:value = "${dish.id}">
         <span th:text = "${dish.name}"></span>
         <br>
       </label>

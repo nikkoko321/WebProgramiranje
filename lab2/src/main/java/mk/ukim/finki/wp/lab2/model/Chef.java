@@ -15,7 +15,7 @@ public class Chef {
     public String firstName;
     public String lastName;
     public String bio;
-    @OneToMany(mappedBy = "chef")
+    @OneToMany(mappedBy = "chef", cascade = CascadeType.ALL)
     public List<Dish> dishes;
 
     public Chef(){
@@ -48,7 +48,4 @@ public class Chef {
         this.dishes = dishes;
     }
 
-    public List<Dish> getDishes() {
-        return dishes;
-    }
 }

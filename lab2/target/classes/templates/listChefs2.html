@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
@@ -22,16 +22,16 @@
     <td th:text="${chef.lastName}"></td>
     <td th:text="${chef.bio}">
     <td class="text-right">
-      <th:block>
-        <form th:action="@{'/chefs/delete/{id}' (id=${chef.customId})}"
+      <th:block sec:authorize="hasRole('ADMIN')">
+        <form th:action="@{'/chefs/delete/{id}' (id=${chef.id})}"
               th:method="DELETE">
           <button type="submit">
             <i>Delete</i>
           </button>
         </form>
       </th:block>
-      <th:block>
-        <form th:action="@{'/chefs/edit-form/{id}' (id=${chef.customId})}"
+      <th:block sec:authorize="hasRole('ADMIN')">
+        <form th:action="@{'/chefs/edit-form/{id}' (id=${chef.id})}"
               th:method="POST">
           <button type="submit">
             <i>Edit</i>
@@ -44,12 +44,11 @@
   </tbody>
 </table>
 
-<div>
+<th:block sec:authorize="hasRole('ADMIN')">
   <a href="/chefs/chef-form">
     Add new product
   </a>
-</div>
-
+</th:block>
 
 
 </body>

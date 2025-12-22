@@ -1,4 +1,4 @@
-<div th:with="formAction = ${chef != null} ? '/chefs/edit/' + ${chef.customId} : '/chefs'">
+<div th:with="formAction = ${chef != null} ? '/chefs/edit/' + ${chef.id} : '/chefs'">
   <form method="post" th:action="${formAction}">
     <div>
       <label for="i">Chef Id</label>
